@@ -1,0 +1,371 @@
+:root{
+  --primary: #E1027E;
+  --bg: #ffffff;
+  --card: #ffffff;
+  --text: #0b0b0b;
+  --muted: #666;
+  --radius: 12px;
+  --gap: 14px;
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  transition: background .25s, color .25s;
+}
+
+/* dark theme */
+body.dark{
+  --bg: #0B0B0D;
+  --card: #0F0F10;
+  --text: #EFEFF1;
+  --muted: #A3A3A6;
+}
+
+/* container */
+/* .app{
+  max-width:980px;
+  margin:0 auto;
+  padding:20px;
+} */ /* <-- УДАЛИТЕ ЭТОТ СТАРЫЙ БЛОК */
+
+/* НОВЫЙ БЛОК для основного контента */
+.app-content {
+    max-width: 980px;
+    margin: 0 auto;
+    /* Отступ сверху для фиксированного app-header и отступ снизу для bottom-navbar */
+    padding: 12px 12px 6rem 12px; 
+}
+@media (min-width: 768px) {
+    /* На десктопе нижний навбар исчезает, уменьшаем нижний отступ */
+    .app-content {
+        padding: 12px 12px 20px 12px;
+    }
+}
+
+
+/* Добавление стиля для иконки Профиля на десктопе */
+.desktop-nav .nav-icon {
+    /* Добавляем отступ справа, чтобы кнопка Профиля не прилипала к кнопке темы */
+    margin-right: 1.5rem; 
+}
+.desktop-nav .nav-icon svg {
+    vertical-align: middle;
+}
+
+/* header */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:var(--gap);
+  margin-bottom:18px;
+}
+.brand{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  text-decoration:none;
+  color:var(--primary);
+  font-weight:700;
+  font-size:20px;
+}
+.logo{
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  background:linear-gradient(135deg,#fff 0%, #ffe6f0 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--primary);
+  font-weight:700;
+  box-shadow:0 6px 18px rgba(225,16,126,0.08);
+}
+
+/* nav */
+.nav a{
+  margin-left:12px;
+  text-decoration:none;
+  color:var(--muted);
+}
+
+/* card */
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:16px;
+  box-shadow: 0 6px 18px rgba(11,11,11,0.04);
+  margin-bottom:16px;
+}
+
+/* home */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap:12px;
+}
+
+/* chat */
+.chat-window{
+  height:360px;
+  overflow:auto;
+  border-radius:12px;
+  padding:12px;
+  background: linear-gradient(180deg, rgba(224,16,126,0.02), rgba(0,0,0,0.01));
+}
+.msg{margin:6px 0; max-width:80%;}
+.msg.user{margin-left:auto; text-align:right}
+.msg.ai{margin-right:auto; text-align:left}
+.msg .bubble{
+  display:inline-block;
+  padding:10px 14px;
+  border-radius:14px;
+  background:rgba(14,14,14,0.06);
+}
+.msg.user .bubble{ background:var(--primary); color:white; }
+
+/* input row */
+.row{display:flex; gap:8px; margin-top:12px}
+.input{
+  flex:1;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid rgba(0,0,0,0.08);
+  background:transparent;
+  color:inherit;
+}
+
+/* buttons */
+.btn{
+  background:var(--primary);
+  color:white;
+  border:none;
+  padding:10px 12px;
+  border-radius:10px;
+  cursor:pointer;
+}
+.btn.ghost{
+  background:transparent;
+  color:var(--primary);
+  border:1px solid var(--primary);
+}
+
+/* mood list */
+.mood-buttons button{
+  margin-right:8px;
+  margin-bottom:8px;
+}
+
+/* journal */
+.j-list{list-style:none;padding:0;margin:0}
+.j-list li{padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,.04); margin-bottom:8px;background:var(--card)}
+.small{color:var(--muted); font-size:13px}
+
+/* responsive */
+@media (max-width:720px){
+  .app{padding:12px}
+}
+
+.chat-page {
+  max-width: 600px;
+  margin: 40px auto;
+  background-color: var(--bg);
+  color: var(--text);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.chat-box {
+  min-height: 300px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.chat-input {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.chat-input button {
+  background-color: #E1027E;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.chat-input button:hover {
+  background-color: #c9006f;
+}
+
+.user {
+  text-align: right;
+}
+
+.assistant {
+  text-align: left;
+  background-color: rgba(225,2,126,0.1);
+  padding: 6px;
+  border-radius: 8px;
+  margin: 5px 0;
+}
+
+
+/* src/styles.css */
+
+/* === НОВЫЕ СТИЛИ ДЛЯ ХЕДЕРА И НАВИГАЦИИ === */
+
+/* --- Верхний хедер --- */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+body.dark .app-header {
+  background-color: rgba(11, 11, 13, 0.8);
+}
+
+.app-header .brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.app-header .theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  color: #4B5563;
+  transition: background-color 0.2s;
+}
+.app-header .theme-toggle:hover {
+  background-color: #F3F4F6;
+}
+body.dark .app-header .theme-toggle {
+  color: #D1D5DB;
+}
+body.dark .app-header .theme-toggle:hover {
+  background-color: #374151;
+}
+
+
+/* --- Навигация для десктопа (в хедере) --- */
+.desktop-nav {
+  display: none; /* Скрыта по умолчанию */
+}
+@media (min-width: 768px) {
+  .desktop-nav { /* Появляется на экранах шире 768px */
+    display: flex;
+    gap: 1.5rem;
+  }
+  .desktop-nav a {
+    text-decoration: none;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+  .desktop-nav a:hover {
+    color: var(--primary);
+  }
+  .desktop-nav a.active {
+    color: var(--primary);
+    font-weight: 600;
+  }
+}
+
+
+/* --- Нижняя навигация для мобильных --- */
+.bottom-navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4rem;
+  background-color: var(--card);
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-around;
+}
+@media (min-width: 768px) {
+  .bottom-navbar {
+    display: none; /* Скрывается на больших экранах */
+  }
+}
+
+.bottom-navbar .nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-decoration: none;
+  color: #9CA3AF; /* Серый для неактивных иконок */
+  transition: color 0.2s;
+}
+
+.bottom-navbar .nav-link.active {
+  color: var(--primary); /* Розовый для активной иконки */
+}
+
+.bottom-navbar .nav-link span {
+  font-size: 0.75rem; /* 12px */
+  margin-top: 4px;
+}
+
+
+/* SPLASH handled inline in component */
+
+/* Navbar tweaks already present */
+
+/* Profile inputs */
+.input{ padding:10px; border-radius:10px; border:1px solid rgba(0,0,0,0.08); background:transparent; }
+textarea.input{ min-height:80px; resize:vertical }
+
+/* Card visuals — a bit stronger */
+.card{ border-radius:12px; padding:14px; background:var(--card); box-shadow:0 8px 24px rgba(0,0,0,0.06) }
+
+/* Buttons */
+.btn{ background:var(--primary); color:#fff; border-radius:10px; padding:8px 12px; border:0; cursor:pointer }
+.btn.ghost{ background:transparent; color:var(--primary); border:1px solid rgba(225,16,126,0.14) }
+
+/* Avatar input hidden trick */
+input[type="file"]{ display:none }
+
+/* Journal / Mood cards */
+.card .small{ color:var(--muted) }
+
+/* Responsive notes */
+@media (max-width:720px){
+  .desktop-nav{ display:none; }
+}
+
