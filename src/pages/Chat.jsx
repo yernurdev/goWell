@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
+import { updateEmotionalStateFromText } from '../utils/emotionAnalyzer'
+
 
 const LOCAL_FALLBACK = [
   "Прости, я не могу заменить специалиста, но могу поддержать. Расскажи подробнее, что случилось?",
@@ -40,7 +42,7 @@ export default function Chat() {
     try {
   const res = await axios.post(
     'https://us-central1-gowell-cc836.cloudfunctions.net/api/chat',
-    { message: text } // 👈 а не text: message
+    { message: text } // 
   )
 
   const reply = res.data.reply // 👈 получаем из backend
@@ -81,7 +83,7 @@ export default function Chat() {
           <button className="btn" onClick={send}>Отправить</button>
         </div>
 
-        <div style={{ marginTop: 10 }} className="small">
+        <div style={{ marginTop: 10 }} className="small">-
           Поддержка. Это не замена врачу. В случае экстренной ситуации обращайся к специалистам.
         </div>
       </div>

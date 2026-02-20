@@ -29,10 +29,10 @@ export default function Home(){
         </div>
 
         <div className="card">
-          <h3>Wellness Hub</h3>
-          <p className="small">Упражнения на дыхание, аффирмации и короткие практики.</p>
-          <Link to="/wellness"><button className="btn">Перейти</button></Link>
-        </div>
+  <h3>Wellness Hub</h3>
+  <p className="small">Упражнения на дыхание, аффирмации и короткие практики.</p>
+  <Link to="/hub"><button className="btn">Перейти</button></Link>
+</div>
       </div>
     </div>
   )
